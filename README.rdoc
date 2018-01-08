@@ -3,3 +3,4 @@
 {<img src='https://jenkins-iac.cegeka.be/job/puppet-hornetq/badge/icon' />}[https://jenkins-iac.cegeka.be/job/puppet-hornetq/]
 
 This is the hornetq module.
+
