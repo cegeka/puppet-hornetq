@@ -13,7 +13,7 @@ class hornetq::service(
   $package_version = regsubst($hornetq_major_version, '\.', '', 'G')
   $real_run_folder = "${run_folder}${package_version}"
 
-  if ($operatingsystemmajrelease < 7) {
+  if (versioncmp($::operatingsystemmajrelease, '7') < 0) {
     file { "/etc/init.d/hornetq${package_version}":
       ensure  => file,
       mode    => '0755',
@@ -29,7 +29,7 @@ class hornetq::service(
 
   case $ensure {
     'running', 'stopped': {
-      if ($operatingsystemmajrelease < 7) {
+      if (versioncmp($::operatingsystemmajrelease, '7') < 0) {
         service { "hornetq${package_version}":
           ensure     => $ensure,
           enable     => $enable,
