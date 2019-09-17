@@ -15,10 +15,10 @@ class hornetq::package(
 
   case $versionlock {
     true: {
-      packagelock { "hornetq${package_version}": }
+      yum::versionlock { "0:hornetq${package_version}-${version}.*": }
     }
     false: {
-      packagelock { "hornetq${package_version}": ensure => absent }
+      yum::versionlock { "0:hornetq${package_version}-${version}.*": ensure => absent }
     }
     default: { fail('Class[Hornetq::Package]: parameter versionlock must be true or false') }
   }
